@@ -12,9 +12,10 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 class Shell(Cmd):
+	prompt = ">$"
 	
 	def preloop(self):
-		print 'A Simple python Shell created by Avais and Swapneel.\nUse help or "?" to see list of commands.\nUse help (command name) to for help realted to the command'
+		print 'A Simple python Shell created by Avais and Swapneel.\nUse help or "?" to see list of commands.\nUse help (command name) for help realted to the command'
 		print 'Version 0.1'
 		print '==============================================\n\n\t\tStay in the shell\n\n=============================================='
 
@@ -54,8 +55,6 @@ class Shell(Cmd):
 		os.chdir(os.path.abspath(os.getcwd()) + '/' + params[0])
 		print "Changed the current working directory to " + bcolors.BOLD + os.getcwd() + bcolors.ENDC 
 
-	prompt = ">$"
-
 	def do_cwd(self, arg):
 		'Shows the current working directory'
 		print os.getcwd()
@@ -64,6 +63,11 @@ class Shell(Cmd):
 		'Creates a new file'
 		os.mknod(arg)
 		print bcolors.BOLD + "Created a file named {0}".format(arg) + bcolors.ENDC
+
+	def do_rem(self, arg):
+		'Removes file'
+		os.remove(arg)
+		print bcolors.FAIL + "Deleted {0}".format(arg) + bcolors.ENDC
 
 shell = Shell()
 shell.cmdloop()
