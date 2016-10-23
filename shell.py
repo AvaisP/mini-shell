@@ -1,4 +1,4 @@
-from cmd import Cmd 
+from cmd2 import Cmd 
 import os
 
 
@@ -13,6 +13,12 @@ class Shell(Cmd):
 		'Lists Files in the present directory'
 		for f in os.listdir('.'):
 			print f
+
+	def do_exit(self, arg):
+		'Exits the shell'
+		print 'Thanks for using this amazingly simple shell.'
+		return True
+
 
 shell = Shell()
 shell.cmdloop()
