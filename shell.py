@@ -48,7 +48,17 @@ class Shell(Cmd):
 		os.rename(params[0], params[1])
 		print bcolors.OKGREEN + '{0} changed to {1}'.format(params[0],params[1]) + bcolors.ENDC
 
-	prompt = os.getcwd()+">$"
+	def do_cd(self, arg):
+		'Changes the current working directory'
+		params = arg.split(' ')
+		os.chdir(os.path.abspath(os.getcwd()) + '/' + params[0])
+		print "Changed the current working directory to" + os.getcwd() 
+
+	prompt = ">$"
+
+	def do_cwd(self, arg):
+		'Shows the current working directory'
+		print os.getcwd()
 
 shell = Shell()
 shell.cmdloop()
