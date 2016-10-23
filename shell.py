@@ -52,13 +52,18 @@ class Shell(Cmd):
 		'Changes the current working directory'
 		params = arg.split(' ')
 		os.chdir(os.path.abspath(os.getcwd()) + '/' + params[0])
-		print "Changed the current working directory to" + os.getcwd() 
+		print "Changed the current working directory to " + bcolors.BOLD + os.getcwd() + bcolors.ENDC 
 
 	prompt = ">$"
 
 	def do_cwd(self, arg):
 		'Shows the current working directory'
 		print os.getcwd()
+
+	def do_touch(self, arg):
+		'Creates a new file'
+		os.mknod(arg)
+		print bcolors.BOLD + "Created a file named {0}".format(arg) + bcolors.ENDC
 
 shell = Shell()
 shell.cmdloop()
