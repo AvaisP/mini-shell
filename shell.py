@@ -34,7 +34,12 @@ class Shell(Cmd):
 	def do_crdr(self, arg):
 		'Creates a Directory'
 		os.mkdir(arg)
-		print 'Directory named {0} created'.format(arg)
+		print bcolors.BOLD + 'Directory named {0} created'.format(arg) + bcolors.ENDC
+
+	def do_rmdr(self, arg):
+		'Removes a Directory'
+		os.rmdir(arg)
+		print bcolors.FAIL +'Directory named {0} deleted'.format(arg) + bcolors.ENDC
 
 
 shell = Shell()
