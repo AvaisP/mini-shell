@@ -13,7 +13,7 @@ class bcolors:
 
 class Shell(Cmd):
 	prompt = ">$"
-	
+
 	def preloop(self):
 		print 'A Simple python Shell created by Avais and Swapneel.\nUse help or "?" to see list of commands.\nUse help (command name) for help realted to the command'
 		print 'Version 0.1'
@@ -68,6 +68,16 @@ class Shell(Cmd):
 		'Removes file'
 		os.remove(arg)
 		print bcolors.FAIL + "Deleted {0}".format(arg) + bcolors.ENDC
+
+	def do_append(self, arg):
+		'Appends to a file\nappend file_name text_to_append'
+		params = arg.split(' ')
+		print params[0]
+		stri = ""
+		for x in params[1:]:
+			stri += x + " "
+		with open(params[0],"a") as file:
+			file.write(stri)
 
 shell = Shell()
 shell.cmdloop()
