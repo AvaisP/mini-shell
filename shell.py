@@ -41,6 +41,13 @@ class Shell(Cmd):
 		os.rmdir(arg)
 		print bcolors.FAIL +'Directory named {0} deleted'.format(arg) + bcolors.ENDC
 
+	def do_rnm(self, arg):
+		'Renames a directory or file'
+		params = arg.split(' ')
+		#print params
+		os.rename(params[0], params[1])
+		print bcolors.OKGREEN + '{0} changed to {1}'.format(params[0],params[1]) + bcolors.ENDC
+
 
 shell = Shell()
 shell.cmdloop()
