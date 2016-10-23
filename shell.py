@@ -48,6 +48,7 @@ class Shell(Cmd):
 		os.rename(params[0], params[1])
 		print bcolors.OKGREEN + '{0} changed to {1}'.format(params[0],params[1]) + bcolors.ENDC
 
+	prompt = os.getcwd()+">$"
 
 shell = Shell()
 shell.cmdloop()
